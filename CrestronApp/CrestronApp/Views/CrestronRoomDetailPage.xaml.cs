@@ -10,19 +10,24 @@ using Xamarin.Forms.Xaml;
 
 namespace CrestronApp.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class CrestronRoomDetailPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class CrestronRoomDetailPage : ContentPage
+    {
         CrestronRoomDetailViewModel viewModel;
-		public CrestronRoomDetailPage ()
-		{
-			InitializeComponent ();
-		}
+        public CrestronRoomDetailPage()
+        {
+            InitializeComponent();
+        }
         public CrestronRoomDetailPage(CrestronRoomDetailViewModel viewModel)
         {
             InitializeComponent();
 
             BindingContext = this.viewModel = viewModel;
         }
-	}
+
+        private async Task ConnectToRoom_Clicked(object sender, EventArgs args)
+        {
+            await Navigation.PushAsync(new CrestronRoomActivityPage(new CrestronRoomActivityViewModel(this.viewModel.Room)));
+        }
+    }
 }

@@ -10,7 +10,10 @@ namespace CrestronApp.ViewModels
     {
         public ActiveCNX Device;
 
-        public CrestronRoomActivityViewModel(CrestronRoom room = null)
+        public string OutputMessage = string.Empty;
+
+
+        public CrestronRoomActivityViewModel(CrestronRoom room)
         {
             Title = room.Name;
             Device = new ActiveCNX(room.IpAddress, room.IpId, room.UserName, room.Password, room.Port, room.UseSsl);

@@ -6,5 +6,6 @@
     <StackLayout Spacing="20" Padding="15">
         <Label Text="{Binding Room.Name}" FontSize="Medium"/>
         <Label Text="{Binding Room.IpAddress}" FontSize="Small"/>
+        <Button Clicked="ConnectToRoom_Clicked" >Connect to this room</Button>
     </StackLayout>
 </ContentPage>
