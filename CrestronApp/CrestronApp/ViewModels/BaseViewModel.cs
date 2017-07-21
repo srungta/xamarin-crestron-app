@@ -12,7 +12,7 @@ namespace CrestronApp.ViewModels
 		/// Get the azure service instance
 		/// </summary>
 		public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
-
+        public IDataStore<CrestronRoom> CrestronDataStore => DependencyService.Get<IDataStore<CrestronRoom>>();
 		bool isBusy = false;
 		public bool IsBusy
 		{
