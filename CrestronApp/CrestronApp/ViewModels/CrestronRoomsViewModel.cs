@@ -21,7 +21,7 @@ namespace CrestronApp.ViewModels
             Items = new ObservableRangeCollection<CrestronRoom>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            MessagingCenter.Subscribe<NewItemPage, CrestronRoom>(this, "AddCrestronRoom", async (obj, item) =>
+            MessagingCenter.Subscribe<NewCrestronRoomPage, CrestronRoom>(this, "AddCrestronRoom", async (obj, item) =>
             {
                 var _item = item as CrestronRoom;
                 Items.Add(_item);
