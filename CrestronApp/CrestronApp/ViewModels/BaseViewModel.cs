@@ -8,11 +8,12 @@ namespace CrestronApp.ViewModels
 {
 	public class BaseViewModel : ObservableObject
 	{
-		/// <summary>
-		/// Get the azure service instance
-		/// </summary>
-		public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        /// <summary>
+        /// Get the azure service instance
+        /// </summary>
+        /// 
         public IDataStore<CrestronRoom> CrestronDataStore => DependencyService.Get<IDataStore<CrestronRoom>>();
+        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
 		bool isBusy = false;
 		public bool IsBusy
 		{

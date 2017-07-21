@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
+[assembly: Dependency(typeof(CrestronApp.Services.CrestronDataStore))]
 namespace CrestronApp.Services
 {
     public class CrestronDataStore : IDataStore<CrestronRoom>
