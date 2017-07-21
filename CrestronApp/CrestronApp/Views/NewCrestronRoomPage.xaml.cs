@@ -26,7 +26,7 @@ namespace CrestronApp.Views
             BindingContext = this;
         }
 
-        private async Task Save_ClickedAsync(object sender, EventArgs e)
+        private async Task Save_Clicked(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, "AddCrestronRoom", Room);
             await Navigation.PopToRootAsync();

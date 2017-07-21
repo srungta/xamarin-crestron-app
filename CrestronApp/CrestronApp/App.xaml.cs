@@ -31,6 +31,11 @@ namespace CrestronApp
                         Title = "About",
                         Icon = Device.OnPlatform<string>("tab_about.png",null,null)
                     },
+                    new NavigationPage(new CrestronRoomsPage())
+                    {
+                        Title = "Browse Room",
+                        Icon = Device.OnPlatform<string>("tab_feed.png",null,null)
+                    }
                 }
             };
         }
