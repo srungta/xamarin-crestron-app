@@ -4,7 +4,29 @@
              x:Class="CrestronApp.Views.CrestronRoomActivityPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin Forms!" />
+            <Button Clicked="ConnectToRoom_Clicked">Connect</Button>
+            <Button Clicked="DisconnectFromRoom_Clicked">Disconnect</Button>
+            <ListView x:Name="MessagesListView"
+				ItemsSource="{Binding Messages}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Label Text="{Binding Message}"
+                       LineBreakMode="NoWrap"
+                       Style="{DynamicResource ListItemTextStyle}"
+                       FontSize="16"/>
+                                <Label Text="{Binding Timestamp}"
+                       LineBreakMode="NoWrap"
+                       Style="{DynamicResource ListItemDetailTextStyle}"
+                       FontSize="13"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

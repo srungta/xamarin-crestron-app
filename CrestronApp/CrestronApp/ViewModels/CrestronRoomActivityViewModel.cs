@@ -1,4 +1,5 @@
 ﻿using Crestron.ActiveCNX;
+using CrestronApp.Helpers;
 using CrestronApp.Models;
 using System;
 using System.Collections.Generic;
@@ -10,18 +11,19 @@ namespace CrestronApp.ViewModels
     {
         public ActiveCNX Device;
 
-        public string OutputMessage = string.Empty;
+        public ObservableRangeCollection<ActivityMessage> Messages { get; set; }
 
 
         public CrestronRoomActivityViewModel(CrestronRoom room)
         {
-            Title = room.Name;
             Device = new ActiveCNX(room.IpAddress, room.IpId, room.UserName, room.Password, room.Port, room.UseSsl);
+            Device.onAnalog += Device_onAnalog;
             Device.onConnect += Device_onConnect;
             Device.onDigital += Device_onDigital;
-            Device.onAnalog += Device_onAnalog;
             Device.onDisconnect += Device_onDisconnect;
             Device.onError += Device_onError;
+            Messages = new ObservableRangeCollection<ActivityMessage>();
+            Title = room.Name;
         }
 
         private void Device_onError(object sender, ActiveCNXErrorEventArgs e)
@@ -51,12 +53,20 @@ namespace CrestronApp.ViewModels
 
         public void DeviceConnect()
         {
-            Device.Connect();
+            //Device.Connect();
+            Messages.Add(new ActivityMessage
+            {
+                Message = "Attempting to connect"
+            });
         }
 
         public void DeviceDisconnect()
         {
-            Device.Disconnect();
+            //Device.Disconnect();
+            Messages.Add(new ActivityMessage
+            {
+                Message = "Attempting to disconnect"
+            });
         }
     }
 }
