@@ -28,27 +28,42 @@ namespace CrestronApp.ViewModels
 
         private void Device_onError(object sender, ActiveCNXErrorEventArgs e)
         {
-            throw new NotImplementedException();
+            Messages.Add(new ActivityMessage
+            {
+                Message = "ERROR : " + e.ErrorMessage
+            });
         }
 
         private void Device_onDisconnect(object sender, ActiveCNXConnectionEventArgs e)
         {
-            throw new NotImplementedException();
+            Messages.Add(new ActivityMessage
+            {
+                Message = "DISCONNECTED : " + e.DisconnectReasonMessage
+            });
         }
 
         private void Device_onAnalog(object sender, ActiveCNXEventArgs e)
         {
-            throw new NotImplementedException();
+            Messages.Add(new ActivityMessage
+            {
+                Message = "ANALOG : " + e.AnalogValue
+            });
         }
 
         private void Device_onDigital(object sender, ActiveCNXEventArgs e)
         {
-            throw new NotImplementedException();
+            Messages.Add(new ActivityMessage
+            {
+                Message = (DigitalJoinEnum)e.Join + " " + e.DigitalValue
+            });
         }
 
         private void Device_onConnect(object sender, ActiveCNXConnectionEventArgs e)
         {
-            throw new NotImplementedException();
+            Messages.Add(new ActivityMessage
+            {
+                Message = "CONNECTED"
+            });
         }
 
         public void DeviceConnect()

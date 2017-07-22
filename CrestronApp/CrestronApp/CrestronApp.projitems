@@ -30,6 +30,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\ActivityMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\BaseDataObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\CrestronRoom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\DigitalJoinEnum.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\CrestronDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CrestronRoomActivityViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CrestronRoomDetailViewModel.cs" />
