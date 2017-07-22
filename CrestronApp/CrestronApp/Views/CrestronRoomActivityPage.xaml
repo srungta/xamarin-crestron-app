@@ -4,8 +4,8 @@
              x:Class="CrestronApp.Views.CrestronRoomActivityPage">
     <ContentPage.Content>
         <StackLayout>
-            <Button Clicked="ConnectToRoom_Clicked">Connect</Button>
-            <Button Clicked="DisconnectFromRoom_Clicked">Disconnect</Button>
+            <Button Clicked="ConnectToRoom_Clicked" Text="Connect" IsEnabled="{Binding !IsConnected}">Connect</Button>
+            <Button Clicked="DisconnectFromRoom_Clicked" Text="Disconnect" IsEnabled="{Binding IsConnected}">Disconnect</Button>
             <ListView x:Name="MessagesListView"
 				ItemsSource="{Binding Messages}"
                 VerticalOptions="FillAndExpand"

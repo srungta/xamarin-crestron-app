@@ -4,8 +4,12 @@
              x:Class="CrestronApp.Views.CrestronRoomDetailPage"
              Title="{Binding Title}">
     <StackLayout Spacing="20" Padding="15">
-        <Label Text="{Binding Room.Name}" FontSize="Medium"/>
-        <Label Text="{Binding Room.IpAddress}" FontSize="Small"/>
-        <Button Clicked="ConnectToRoom_Clicked" >Connect to this room</Button>
+        <Label Text="{Binding Room.Name,StringFormat='Room Name = {0}'}" FontSize="Medium"/>
+        <Label Text="{Binding Room.IpAddress,StringFormat='IP Address = {0}'}" FontSize="Small"/>
+        <Label Text="{Binding Room.IpId,StringFormat='IPID = {0}'}" FontSize="Small"/>
+        <Label Text="{Binding Room.Password,StringFormat='Password = {0}'}" FontSize="Small"/>
+        <Label Text="{Binding Room.Port,StringFormat='Port = {0}'}" FontSize="Small"/>
+        <Label Text="{Binding Room.UserName,StringFormat='UserName = {0}'}" FontSize="Small"/>
+        <Button Clicked="ConnectToRoom_Clicked" Text="i want to test this room">Connect to this room</Button>
     </StackLayout>
 </ContentPage>

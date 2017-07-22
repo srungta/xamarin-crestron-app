@@ -9,6 +9,7 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
+            <SearchBar Placeholder="Zoeken..." TextChanged="SearchBar_OnTextChanged"></SearchBar>
             <ListView x:Name="RoomsListView"
                       ItemsSource="{Binding Items}"
                       VerticalOptions="FillAndExpand"

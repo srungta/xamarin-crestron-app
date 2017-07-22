@@ -1,15 +1,21 @@
 ﻿using Crestron.ActiveCNX;
 using CrestronApp.Helpers;
 using CrestronApp.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CrestronApp.ViewModels
 {
     public class CrestronRoomActivityViewModel : BaseViewModel
     {
         public ActiveCNX Device;
+
+        private bool isConnected;
+
+        public bool IsConnected
+        {
+            get { return isConnected; }
+            set { isConnected = value; }
+        }
+
 
         public ObservableRangeCollection<ActivityMessage> Messages { get; set; }
 
@@ -28,6 +34,7 @@ namespace CrestronApp.ViewModels
 
         private void Device_onError(object sender, ActiveCNXErrorEventArgs e)
         {
+            IsConnected = false;
             Messages.Add(new ActivityMessage
             {
                 Message = "ERROR : " + e.ErrorMessage
@@ -36,6 +43,7 @@ namespace CrestronApp.ViewModels
 
         private void Device_onDisconnect(object sender, ActiveCNXConnectionEventArgs e)
         {
+            IsConnected = false;
             Messages.Add(new ActivityMessage
             {
                 Message = "DISCONNECTED : " + e.DisconnectReasonMessage
@@ -60,6 +68,7 @@ namespace CrestronApp.ViewModels
 
         private void Device_onConnect(object sender, ActiveCNXConnectionEventArgs e)
         {
+            IsConnected = true;
             Messages.Add(new ActivityMessage
             {
                 Message = "CONNECTED"
@@ -68,20 +77,27 @@ namespace CrestronApp.ViewModels
 
         public void DeviceConnect()
         {
-            //Device.Connect();
-            Messages.Add(new ActivityMessage
+            if (!isConnected)
             {
-                Message = "Attempting to connect"
-            });
+                Device.Connect();
+                Messages.Add(new ActivityMessage
+                {
+                    Message = "Attempting to connect"
+                });
+
+            } 
         }
 
         public void DeviceDisconnect()
         {
-            //Device.Disconnect();
-            Messages.Add(new ActivityMessage
+            if (isConnected)
             {
-                Message = "Attempting to disconnect"
-            });
+                Device.Disconnect();
+                Messages.Add(new ActivityMessage
+                {
+                    Message = "Attempting to disconnect"
+                });
+            }
         }
     }
 }

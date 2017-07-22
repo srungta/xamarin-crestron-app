@@ -11,16 +11,16 @@ using Xamarin.Forms.Xaml;
 
 namespace CrestronApp.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class CrestronRoomsPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class CrestronRoomsPage : ContentPage
+    {
         CrestronRoomsViewModel viewModel;
-		public CrestronRoomsPage ()
-		{
-			InitializeComponent ();
+        public CrestronRoomsPage()
+        {
+            InitializeComponent();
 
             BindingContext = viewModel = new CrestronRoomsViewModel();
-		}
+        }
 
         async void OnRoomSelected(object sender, SelectedItemChangedEventArgs args)
         {
@@ -45,6 +45,14 @@ namespace CrestronApp.Views
 
             if (viewModel.Items.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
+        }
+
+        private void SearchBar_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(e.NewTextValue))
+                RoomsListView.ItemsSource = viewModel.Items;
+            else
+                RoomsListView.ItemsSource = viewModel.Items.Where(i => i.Name.IndexOf(e.NewTextValue, StringComparison.OrdinalIgnoreCase) != -1);
         }
     }
 }

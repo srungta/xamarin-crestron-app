@@ -1,40 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CrestronApp.Models
+﻿namespace CrestronApp.Models
 {
     public class CrestronRoom : BaseDataObject
     {
-        string name = string.Empty;
-        string ipAddress = string.Empty;
         public long ipId = 7;
-        public string userName = string.Empty;
         public string password = string.Empty;
         public int port = 12345;
+        public string userName = string.Empty;
         public bool useSsl = false;
-
-        public string Name
-        {
-            get { return name; }
-            set { SetProperty(ref name, value); }
-        }
+        string ipAddress = string.Empty;
+        string name = string.Empty;
 
         public string IpAddress
         {
             get { return ipAddress; }
             set { SetProperty(ref ipAddress, value); }
         }
-
         public long IpId
         {
             get { return ipId; }
             set { SetProperty(ref ipId, value); }
         }
-        public string UserName
+        public string Name
         {
-            get { return ipAddress; }
-            set { SetProperty(ref ipAddress, value); }
+            get { return name; }
+            set { SetProperty(ref name, value); }
         }
         public string Password
         {
@@ -45,6 +34,11 @@ namespace CrestronApp.Models
         {
             get { return port; }
             set { SetProperty(ref port, value); }
+        }
+        public string UserName
+        {
+            get { return ipAddress; }
+            set { SetProperty(ref ipAddress, value); }
         }
         public bool UseSsl
         {
