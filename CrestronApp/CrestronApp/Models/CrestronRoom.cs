@@ -4,7 +4,7 @@
     {
         public long ipId = 7;
         public string password = string.Empty;
-        public int port = 12345;
+        public int port = 41794;
         public string userName = string.Empty;
         public bool useSsl = false;
         string ipAddress = string.Empty;

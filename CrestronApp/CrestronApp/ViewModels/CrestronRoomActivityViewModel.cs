@@ -37,7 +37,7 @@ namespace CrestronApp.ViewModels
             IsConnected = false;
             Messages.Add(new ActivityMessage
             {
-                Message = "ERROR : " + e.ErrorMessage
+                Message = $"ERROR : {e.ErrorMessage}"
             });
         }
 
@@ -46,7 +46,7 @@ namespace CrestronApp.ViewModels
             IsConnected = false;
             Messages.Add(new ActivityMessage
             {
-                Message = "DISCONNECTED : " + e.DisconnectReasonMessage
+                Message = $"DISCONNECTED : {e.DisconnectReasonMessage}"
             });
         }
 
@@ -54,7 +54,7 @@ namespace CrestronApp.ViewModels
         {
             Messages.Add(new ActivityMessage
             {
-                Message = "ANALOG : " + e.AnalogValue
+                Message = $"ANALOG : {e.AnalogValue}"
             });
         }
 
@@ -62,7 +62,7 @@ namespace CrestronApp.ViewModels
         {
             Messages.Add(new ActivityMessage
             {
-                Message = (DigitalJoinEnum)e.Join + " " + e.DigitalValue
+                Message = $"{(DigitalJoinEnum)e.Join} {e.DigitalValue}"
             });
         }
 
